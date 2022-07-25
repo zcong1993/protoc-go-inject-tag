@@ -4,8 +4,9 @@ import (
 	"flag"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
+
+	"github.com/bmatcuk/doublestar/v4"
 )
 
 func main() {
@@ -27,7 +28,7 @@ func main() {
 
 	// Note: glob doesn't handle ** (treats as just one *). This will return
 	// files and folders, so we'll have to filter them out.
-	globResults, err := filepath.Glob(inputFiles)
+	globResults, err := doublestar.FilepathGlob(inputFiles)
 	if err != nil {
 		log.Fatal(err)
 	}
